@@ -6,10 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import JavaBeans.User;
 
 public class NewCustomerServlet extends HttpServlet {
-
-    
 
     
     @Override
@@ -32,20 +33,37 @@ public class NewCustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String city = request.getParameter("city");
         String state = request.getParameter("state");
-        String zipcode = request.getParameter("zipcode");
+        String zipCode = request.getParameter("zipCode");
         String email = request.getParameter("email");
-      
    
         String message = "";
-            
+        
+            // If one of the variables are emtpy it displays message
             if ( firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() ||
                    address.isEmpty() ||     city.isEmpty() || state.isEmpty() ||
-                   zipcode.isEmpty() ||    email.isEmpty()) {
+                   zipCode.isEmpty() ||    email.isEmpty()) {
                 message = "Please fill out all text boxes.";
             } 
             
+            // If all fields are filled out
             else {
-                url = "/Success.html";
+                // Getting session
+                HttpSession session = request.getSession();
+                
+                // Creating user with constructor 
+                User user = new User (firstName, lastName, phone, address, 
+                                    city, state, zipCode, email);
+                
+               // Setting the user as session attribute
+                session.setAttribute("user", user);
+                
+                // Setting a session attribute for the userId and password
+                //      to user getAttribute to use in the LoginServlet
+                session.setAttribute("userName", user.getUsername());
+                session.setAttribute("userPassword", user.getPassword());
+                
+                
+                url = "/Success.jsp";
             }
             
             request.setAttribute("message", message);

@@ -62,7 +62,7 @@ input[type="text"], input[type="email"] {  /* An attribute selector */
     text-decoration: underline; 
     font-size: 90%;
    }
-   
+  
 label {
     width: 7em;
     margin-bottom: 0.5em;
@@ -71,5 +71,9 @@ label {
    }
    
 br {
-    clear:both;
+    clear: both;
+   }
+   
+   tr {
+       width: 20em;
    }
