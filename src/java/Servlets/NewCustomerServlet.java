@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import JavaBeans.User;
+import JavaBeans.Account;
+import DB.UserDB;
+import DB.AccountDB;
 
 public class NewCustomerServlet extends HttpServlet {
 
@@ -54,6 +57,9 @@ public class NewCustomerServlet extends HttpServlet {
                 User user = new User (firstName, lastName, phone, address, 
                                     city, state, zipCode, email);
                 
+                // Create Account with balance
+                Account account = new Account(25);
+                
                // Setting the user as session attribute
                 session.setAttribute("user", user);
                 
@@ -62,9 +68,13 @@ public class NewCustomerServlet extends HttpServlet {
                 session.setAttribute("userName", user.getUsername());
                 session.setAttribute("userPassword", user.getPassword());
                 
-                
+                UserDB.insert(user);
+                AccountDB.insert(account);
                 url = "/Success.jsp";
+                
+                request.setAttribute("user", user);
             }
+            
             
             request.setAttribute("message", message);
         

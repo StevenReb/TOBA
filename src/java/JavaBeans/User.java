@@ -2,10 +2,21 @@ package JavaBeans;
 
 import java.beans.*;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import JavaBeans.Account;
+
+@Entity
 public class User implements Serializable {
     
+    private Account account;
     // UserBean variables
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private Long userId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -49,7 +60,11 @@ public class User implements Serializable {
         this.password = "welcome1";
     }
     
-    // Setter
+    // Setters
+    public void setUserId (Long userId) {
+        this.userId = userId;
+    }
+    
     public void setUsername (String username) {
         this.username = username;
     }
@@ -58,7 +73,51 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    // Getter for customer data
+    public void setFirstName (String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public void setLastName (String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public void setPhone (String phone) {
+        this.phone = phone;
+    }
+    
+    public void setAddress (String address) {
+        this.address = address;
+    }
+    
+    public void setCity (String city) {
+        this.city = city;
+    }
+    
+    public void setState (String state) {
+        this.state = state;
+    }
+    
+    public void setZipCode (String zipCode) {
+        this.zipCode = zipCode;
+    }
+    
+    public void setEmail (String email) {
+        this.email = email;
+    }
+    
+    
+    // Getters
+    public Long getUserId () {
+        return userId;
+    }
+    
+    public String getUsername () {
+        return username;
+    }
+    
+    public String getPassword () {
+        return password;
+    } 
     public String getFirstName () {
         return firstName;
     }
@@ -89,14 +148,5 @@ public class User implements Serializable {
     
     public String getEmail () {
         return email;
-    }
-    
-    public String getUsername () {
-        return username;
-    }
-    
-    public String getPassword () {
-        return password;
-    }
-    
+    } 
 }
