@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+        <title> Admin Login </title>
+    </head>
+    
+    <body>
+    
+        <h1> Admin Login Form </h1>
+        <p> Please enter your username and password to continue. </p>
+        
+        <form class="login" action="j_security_check" method="get">
+                <table style="padding-left: 10px;">
+                    <tr>
+                        <td> Username: </td>
+                        <td><input type="text" name="j_username" value=""></td>
+                    </tr>
+
+                    <tr>
+                        <td> Password: </td>
+                        <td><input type="text" name="j_password" value=""></td>
+                    </tr>
+
+                    <tr>
+                        <td> &nbsp; </td>
+                        <td style="padding-bottom: 10px;"> <input type="submit" value="Login"> </td>
+
+                    </tr>
+
+                </table>
+            </form>
+    </body>
+</html>
